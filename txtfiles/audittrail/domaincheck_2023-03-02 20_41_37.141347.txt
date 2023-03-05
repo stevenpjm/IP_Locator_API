@@ -1,0 +1,4 @@
+{
+'1':{'domain':'wwww.w3school.com','ip':'192.229.133.0','timestamp':'2023-03-02 20:41','prefix': '/24', 'mask': '255.255.255.0', 'usable_hosts': '254', 'network_class': 'A', 'ping':'Ping successful', 'port' : '8080 failed to connect'},
+'2':{'domain':'wwww.w3school.com','ip':'192.229.133.0','timestamp':'2023-03-02 20:41','prefix': '/24', 'mask': '255.255.255.0', 'usable_hosts': '254', 'network_class': 'A', 'ping':'Ping successful', 'port' : '8080 failed to connect'}
+}

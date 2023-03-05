@@ -1,0 +1,1 @@
+{"domain":"www.python.org", "IP address":"","Subnet prefix ":"","Network mask":"","Usable hosts":"","Class":""}
