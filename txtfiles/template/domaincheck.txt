@@ -1,0 +1,1 @@
+{'domain':'','','timestamp':'','prefix': '', 'mask': '', 'usable hosts': '', 'network class': '', 'ping':''', 'Port' : ''}
