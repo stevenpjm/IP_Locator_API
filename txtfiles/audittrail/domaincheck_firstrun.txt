@@ -1,3 +1,0 @@
-{
-{"domain":"", "IP address":"","Subnet prefix ":"","Network mask":"","Usable hosts":"","Class":""},
-}
