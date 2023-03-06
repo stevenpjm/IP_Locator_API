@@ -1,0 +1,1 @@
+{"1" :{"domain": "www.python.org", "ip": "151.101.0.0", "timestamp": "2023-03-06 01:13:25.804838", "prefix": "/16", "mask": "255.255.0.0", "usable hosts": "None", "network class": "None", "ping": "Network Error", "port": "151.101.0.0 on Port : 8080 failed to connect"}}

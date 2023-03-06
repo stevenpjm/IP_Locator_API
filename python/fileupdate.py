@@ -41,7 +41,7 @@ def updateFile(file, data):
         domaincheck.write(str(data))
         domaincheck.close()
     except:
-        pass
+        return "Could not update "
 
 
 # copy paste the existing file
@@ -59,22 +59,22 @@ def open_file_retrieve_data(file):
     fileopened = fileopened.read()
     converteddata = fileopened.replace("'", "\"")
     converteddata = converteddata.replace("\n", "")
-    data = json.loads(converteddata)
-    container = {'1': {}}
-    currdictindex = int(container.__len__())
-    if currdictindex == 1:
-        container[str(currdictindex)].update(data)
-    else:
-        ++currdictindex
-        container[str(currdictindex)].update(data)
-    return container
+    #data = json.loads(converteddata)
+    #container = {'1': {}}
+    #currdictindex = int(container.__len__())
+    #if currdictindex == 1:
+    #    container[str(currdictindex)].update(data)
+    #else:
+    #    ++currdictindex
+    #    container[str(currdictindex)].update(data)
+    return converteddata
 
 
 # updates the file with the latest details
 def updatefilewithresults(file, domain, ipaddress, timestamp, prefix, mask, usablehosts, networkclass, ping, port):
     complideddata = "{ \"domain\" : \"" + domain + "\", \"ip\" : \""+ ipaddress +"\", \"timestamp\" :\"" + timestamp + "\", \"prefix\":\"" +  prefix + "\", \"mask\" :\"" + mask + "\", \"usable hosts\" :\"" + usablehosts + "\", \"network class\" : \" " + networkclass + " \", ping :\"" + ping + "\", \"port\" : \"" + port +"\"}"
-    f = open(file, complideddata)
-    f.write("Woops! I have deleted the content!")
+    f = open(file, "w")
+    f.write(complideddata)
     f.close()
 
 
