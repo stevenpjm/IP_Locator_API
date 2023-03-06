@@ -2,6 +2,7 @@ import filecmp
 import glob
 import json
 import os
+import shutil
 from datetime import datetime
 
 
@@ -28,7 +29,7 @@ def get_current_file():
 def check_for_updates():
     getmostrecentfile = most_recent_file_from_audit()
     get_current_file = "txtfiles/domaincheck.txt"
-    if getmostrecentfile != "":
+    if getmostrecentfile != False:
         boolean_value = comparelines(get_current_file, getmostrecentfile)
         return boolean_value
 
@@ -45,8 +46,11 @@ def updateFile(file, data):
 
 # copy paste the existing file
 def Copy_paste_rename_file():
-    timestamp = datetime.now()
-    os.replace("txtfiles/json.loads(.json", "txtfiles/audittrail/domaincheck_" + timestamp + ".txt")
+    now = str(datetime.now())
+    now = now.replace(":", "_")
+    src_dir = os.getenv('templatefile')
+    dst_dir = "txtfiles/audittrail/domaincheck_" + now + ".txt"
+    return shutil.copy(src_dir, dst_dir)
 
 
 # open selected txt file, convert to python Dict (Return: Json) grab data as json
@@ -67,13 +71,12 @@ def open_file_retrieve_data(file):
 
 
 # updates the file with the latest details
-def updatearray(file, ipresults, socketResults, networkdeatils, timestamp, ipaddress, domain):
-    for line in file:
-        fileipaddress = line.get("ipaddress")
-        filedomain = line.get("Domain")
-        if fileipaddress == ipaddress or filedomain == domain:
-            line.update({"ipaddress": ipresults, "socket Results": socketResults, "network details": networkdeatils,
-                         "timestamp": timestamp})
+def updatefilewithresults(file, domain, ipaddress, timestamp, prefix, mask, usablehosts, networkclass, ping, port):
+    complideddata = "{ \"domain\" : \"" + domain + "\", \"ip\" : \""+ ipaddress +"\", \"timestamp\" :\"" + timestamp + "\", \"prefix\":\"" +  prefix + "\", \"mask\" :\"" + mask + "\", \"usable hosts\" :\"" + usablehosts + "\", \"network class\" : \" " + networkclass + " \", ping :\"" + ping + "\", \"port\" : \"" + port +"\"}"
+    f = open(file, complideddata)
+    f.write("Woops! I have deleted the content!")
+    f.close()
+
 
 
 # compare each line against File 1 and 2, if  (Return: True or False)

@@ -52,14 +52,14 @@ def scheduleTasks():
         #ping ip address
         pingstatus = pingip.check_ping(ipaddress)
 
-        # compile all results to be added to file
-        compliedetails = {ipaddress, str(socketResults), str(networkdetails), str(timestamp), pingstatus }
+        # Creates file to audit trail
+        file = fileupdate.Copy_paste_rename_file()
 
         # add results to file
-        fileupdate.updateFile(os.getenv('domaincheck'), compliedetails)
-
-        # copies file to audit trail
-        fileupdate.Copy_paste_rename_file()
+        socketResults = str(socketResults)
+        socketResults = socketResults.replace('/', '').replace('{', '').replace('}', '')
+        domain = getdata[lastkey]["domain"]
+        fileupdate.updatefilewithresults(file, domain, ipaddress, str(timestamp), str(networkdetails.get("prefix")), str(networkdetails.get("mask")), str(networkdetails.get("usablehost")), str(networkdetails.get("networkclass")), pingstatus, socketResults )
 
         # Has the file been updated
         updatedfile = "Yes"
