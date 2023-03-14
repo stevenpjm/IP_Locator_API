@@ -15,8 +15,8 @@ def most_recent_file_from_audit():
         else:
             latest_file = max(list_of_files, key=os.path.getctime)
             return latest_file
-    except:
-        return False
+    except Exception as e:
+        return "issue with most recent file because : " + e
 
 
 # get domaincheck.txt file from txtfiles folder
@@ -40,8 +40,8 @@ def updateFile(file, data):
         domaincheck = open(file, "a")
         domaincheck.write(str(data))
         domaincheck.close()
-    except:
-        return "Could not update "
+    except Exception as e:
+        return "Could not update because " + e
 
 
 # copy paste the existing file

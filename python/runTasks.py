@@ -1,15 +1,15 @@
 # Framework imports
-import time, schedule
 from datetime import datetime
 import json
 from dotenv import load_dotenv
 import os
 
 # project imports
-from python import fileupdate, ipdomainrequest, checksubnetMask, socketcheck,pingip
-
-#loads enviroment variables
-# variables : domaincheck
+from python import fileupdate
+from python import ipdomainrequest
+from python import checksubnetMask
+from python import socketcheck
+from python import pingip
 
 def configure():
     load_dotenv()
@@ -59,7 +59,7 @@ def scheduleTasks():
         socketResults = str(socketResults)
         socketResults = socketResults.replace('/', '').replace('{', '').replace('}', '')
         domain = getdata[lastkey]["domain"]
-        fileupdate.updatefilewithresults(file, domain, ipaddress, str(timestamp), str(networkdetails.get("prefix")), str(networkdetails.get("mask")), str(networkdetails.get("usablehost")), str(networkdetails.get("networkclass")), pingstatus, socketResults )
+        fileupdate.updatefilewithresults(file, domain, ipaddress, str(timestamp), str(networkdetails.get("prefix")), str(networkdetails.get("mask")), str(networkdetails.get("usable_host")), str(networkdetails.get("network_class")), pingstatus, socketResults )
 
         # Has the file been updated
         updatedfile = "Yes"

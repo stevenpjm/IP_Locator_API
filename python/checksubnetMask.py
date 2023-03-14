@@ -1,8 +1,5 @@
 import json
 
-from python import fileupdate
-
-
 def subnetmask(prefix):
     try:
         fileopened = open("txtfiles/subnet.txt","r")
